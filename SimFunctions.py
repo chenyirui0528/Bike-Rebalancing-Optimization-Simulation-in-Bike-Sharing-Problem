@@ -43,12 +43,13 @@ def SimFunctionsInit(calendar,queues,ctstats,dtstats,resources):
 
 
 
-def Schedule(calendar,EventType, EventTime):
+def Schedule(calendar,EventType, EventTime, **handlerKwargs):
     #Schedule future events of EventType to occur at time SimClasses.Clock + EventTime
     
     addedEvent = SimClasses.EventNotice()
     addedEvent.EventType = EventType
     addedEvent.EventTime = SimClasses.Clock + EventTime
+    addedEvent.handlerKwargs = handlerKwargs
     # print("SimClasses.Clock is %f" % SimClasses.Clock)
     # print(EventTime)
     calendar.Schedule(addedEvent)

@@ -87,12 +87,16 @@ class DTStat():
         
 
 class Entity():
-    # This is the generic Entity that has a single attribute CreateTime
+    """Represents a Citi bike customer."""
+
+    # Monotonically increasing customer id.
+    currentCustomerID = 0
+
     def __init__(self):
-        # Executes with the Entity object is created to initialize variables
-        # Add additional problem-specific attributes here
-        self.CreateTime = Clock
-        self.ClassNum = 0
+        # Assign unique customer ID.
+        self.customerID = Customer.currentCustomerID
+        Customer.currentCustomerID += 1
+        self.startPickupWait = None
         
 
         
@@ -104,7 +108,7 @@ class EventNotice():
         self.EventTime = 0.0
         self.EventType = ""
         self.WhichObject = ()
-        
+        self.handlerKwargs = ""
         
 class EventCalendar():
     # This class creates an EventCalendar object which is a list of
